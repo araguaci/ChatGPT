@@ -6,7 +6,6 @@
 
 [![English badge](https://img.shields.io/badge/%E8%8B%B1%E6%96%87-English-blue)](./README.md)
 [![简体中文 badge](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-Simplified%20Chinese-blue)](./README-ZH_CN.md)\
-![License](https://img.shields.io/badge/License-Apache%202-green.svg)
 ![visitor](https://visitor-badge.glitch.me/badge?page_id=lencx.chatgpt)
 [![ChatGPT downloads](https://img.shields.io/github/downloads/lencx/ChatGPT/total.svg?style=flat-square)](https://github.com/lencx/ChatGPT/releases)
 [![chat](https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord)](https://discord.gg/aPhCRf4zZr)
@@ -18,6 +17,21 @@
 
 <a href="https://www.buymeacoffee.com/lencx" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" ></a>
 
+**🛑 URGENT NOTICE: A hacker has been found to take advantage of the heat of `lencx/ChatGPT` to plant a Trojan horse after the fork project and rebuild the installer. If you have friends around you who are using this desktop application, please remind them not to download unknown links freely. Now the project will remove other installation ways and only provide this download link https://github.com/lencx/ChatGPT/releases**
+
+**🛑 紧急通知：目前发现有黑客利用 `lencx/ChatGPT` 的热度，在 fork 项目后植入木马，重新构建安装程序。如果你身边有朋友正在使用此桌面应用，请提醒 TA 们不要随意下载不明链接。现在项目将删除其他安装途径，仅提供此下载链接 https://github.com/lencx/ChatGPT/releases**
+
+---
+
+**It is an unofficial project intended for personal learning and research purposes only. During the time that the ChatGPT desktop application was open-sourced, it received a lot of attention, and I would like to thank everyone for their support. However, as things have developed, there are two issues that seriously affect the project's next development plan:**
+
+- **Some people have used it for repackaging and selling for profit.**
+- **The name and icon of ChatGPT may be involved in infringement issues.**
+
+**New repository: https://github.com/lencx/nofwl**
+
+---
+
 ## 📦 Install
 
 - [📝 Update Log](./UPDATE_LOG.md)
@@ -27,7 +41,7 @@
 
 ### Windows
 
-- [ChatGPT_0.11.0_windows_x86_64.msi](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_windows_x86_64.msi): Direct download installer
+- [ChatGPT_0.12.0_windows_x86_64.msi](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_windows_x86_64.msi): Direct download installer
 - Use [winget](https://winstall.app/apps/lencx.ChatGPT):
 
   ```bash
@@ -38,19 +52,12 @@
   winget install --id=lencx.ChatGPT -e --version 0.10.0
   ```
 
-- Use [Chocolatey](https://community.chocolatey.org/packages/chatgpt/0.11.0#versionhistory):
-
-  ```bash
-  # install the package
-  choco install chatgpt -y
-  ```
-
-**Note: If the installation path and application name are the same, it will lead to conflict ([#142](https://github.com/lencx/ChatGPT/issues/142#issuecomment-0.11.0))**
+**Note: If the installation path and application name are the same, it will lead to conflict ([#142](https://github.com/lencx/ChatGPT/issues/142#issuecomment-0.12.0))**
 
 ### Mac
 
-- [ChatGPT_0.11.0_macos_aarch64.dmg](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_macos_aarch64.dmg): Direct download installer
-- [ChatGPT_0.11.0_macos_x86_64.dmg](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_macos_x86_64.dmg): Direct download installer
+- [ChatGPT_0.12.0_macos_aarch64.dmg](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_macos_aarch64.dmg): Direct download installer
+- [ChatGPT_0.12.0_macos_x86_64.dmg](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_macos_x86_64.dmg): Direct download installer
 - Homebrew \
   Or you can install with _[Homebrew](https://brew.sh) ([Cask](https://docs.brew.sh/Cask-Cookbook)):_
   ```sh
@@ -64,13 +71,16 @@
   cask "chatgpt", args: { "no-quarantine": true }
   ```
 
+**If you encounter the error message `"ChatGPT" is damaged and can't be opened. You should move it to the Trash`. while installing software on macOS, it may be due to security settings restrictions in macOS. To solve this problem, please try the following command in Terminal:**
+
+```bash
+sudo xattr -r -d com.apple.quarantine /YOUR_PATH/ChatGPT.app
+```
+
 ### Linux
 
-- [ChatGPT_0.11.0_linux_x86_64.deb](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_linux_x86_64.deb): Download `.deb` installer, advantage small size, disadvantage poor compatibility
-- [ChatGPT_0.11.0_linux_x86_64.AppImage.tar.gz](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_linux_x86_64.AppImage.tar.gz): Works reliably, you can try it if `.deb` fails to run
-- Available on [AUR](https://aur.archlinux.org/packages/chatgpt-desktop-bin) with the package name `chatgpt-desktop-bin`, and you can use your favourite AUR package manager to install it.
-- Also, [Aur](https://aur.archlinux.org/packages/chatgpt-desktop-git) available with the package name `chatgpt-desktop-git`.
-<!-- chatgpt-desktop-git always builds the latest commits of main branch  -->
+- [ChatGPT_0.12.0_linux_x86_64.deb](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_linux_x86_64.deb): Download `.deb` installer, advantage small size, disadvantage poor compatibility
+- [ChatGPT_0.12.0_linux_x86_64.AppImage.tar.gz](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_linux_x86_64.AppImage.tar.gz): Works reliably, you can try it if `.deb` fails to run
 
 <!-- tr-download-end -->
 
@@ -99,6 +109,7 @@ You can look at **[awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt
 ## ✨ Features
 
 - Multi-platform: `macOS` `Linux` `Windows`
+- Text-to-Speech
 - Export ChatGPT history (PNG, PDF and Markdown)
 - The main window and system tray support custom URLs to wrap any website into a desktop application
 - Automatic application upgrade notification
@@ -141,15 +152,15 @@ You can look at **[awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt
 | macOS    | `/Users/lencx/.chatgpt`   |
 | Windows  | `C:\Users\lencx\.chatgpt` |
 
-- `[.chatgpt]` - application configuration root folder
-  - `chat.conf.json` - preferences configuration
+- `[.chatgpt]` - Application configuration root folder
+  - `chat.conf.json` - Preferences configuration
   - `chat.awesome.json` - Custom URL lists, similar to browser bookmarks. Any URL can be used as the main window or tray window (**Control Conter -> Awesome**)
   - `chat.model.json` - prompts configuration，contains three parts:
     - `user_custom` - Requires manual data entry (**Control Conter -> Language Model -> User Custom**)
     - `sync_prompts` - Synchronizing data from [f/awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts) (**Control Conter -> Language Model -> Sync Prompts**)
     - `sync_custom` - Synchronize custom json and csv file data, support local and remote (**Control Conter -> Language Model -> Sync Custom**)
-  - `chat.model.cmd.json` - filtered (whether to enable) and sorted slash commands
-  - `[cache_model]` - caching model data
+  - `chat.model.cmd.json` - Filtered (whether to enable) and sorted slash commands
+  - `[cache_model]` - Caching model data
     - `chatgpt_prompts.json` - Cache `sync_prompts` data
     - `user_custom.json` - Cache `user_custom` data
     - `ae6cf32a6f8541b499d6bfe549dbfca3.json` - Randomly generated file names, cache `sync_custom` data
@@ -158,7 +169,7 @@ You can look at **[awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt
 
 ### Sync Custom
 
-Currently, only json and csv are supported for synchronizing custom files, and the following formats need to be met, otherwise the application will be abnormal：
+Currently, only JSON and CSV are supported for synchronizing custom files, and the following formats need to be met, otherwise the application will be abnormal：
 
 `JSON format:`
 
@@ -249,7 +260,7 @@ yarn dev
 yarn build
 ```
 
-- [The distDir configuration is set to "../dist" but this path doesn't exist](https://github.com/lencx/ChatGPT/discussions/180)
+- [The distDir configuration is set to "../dist" but this path doesn't exist.](https://github.com/lencx/ChatGPT/discussions/180)
 - [Error A public key has been found, but no private key. Make sure to set TAURI_PRIVATE_KEY environment variable.](https://github.com/lencx/ChatGPT/discussions/182)
 
 ## ❤️ Thanks
@@ -271,4 +282,4 @@ yarn build
 
 ## License
 
-Apache License
+AGPL-3.0 License

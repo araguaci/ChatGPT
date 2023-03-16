@@ -54,6 +54,10 @@ jobs:
         with:
           key: ${{ matrix.target }}
 
+      - name: Install xattr (macos only)
+        if: matrix.os == 'macos-latest'
+        run: pip install xattr
+
       - name: Install dependencies (ubuntu only)
         if: matrix.os == 'ubuntu-latest'
         run: |
@@ -105,6 +109,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Install xattr
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xattr
 
       - name: Query version number
         run: echo "version=${GITHUB_REF:11}" >> $GITHUB_ENV
@@ -185,13 +194,13 @@ jobs:
       - name: Query version number
         run: echo "version=${GITHUB_REF:11}" >> $GITHUB_ENV
 
-  publish-winget:
-    # Action can only be run on windows
-    runs-on: windows-latest
-    needs: [build-chatgpt, release-chatgpt]
-    steps:
-      - uses: vedantmgoyal2009/winget-releaser@v1
-        with:
-          identifier: lencx.ChatGPT
-          token: ${{ secrets.WINGET_TOKEN }}
-          version: ${{ github.event.release.tag_name }}
+  # publish-winget:
+  #   # Action can only be run on windows
+  #   runs-on: windows-latest
+  #   needs: [build-chatgpt, release-chatgpt]
+  #   steps:
+  #     - uses: vedantmgoyal2009/winget-releaser@v1
+  #       with:
+  #         identifier: lencx.ChatGPT
+  #         token: ${{ secrets.WINGET_TOKEN }}
+  #         version: ${{ github.event.release.tag_name }}

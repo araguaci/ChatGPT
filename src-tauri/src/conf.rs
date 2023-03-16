@@ -10,6 +10,7 @@ use crate::utils::{app_root, create_file, exists};
 
 pub const APP_WEBSITE: &str = "https://lencx.github.io/app/";
 pub const ISSUES_URL: &str = "https://github.com/lencx/ChatGPT/issues";
+pub const NOFWL_APP: &str = "https://github.com/lencx/nofwl";
 pub const UPDATE_LOG_URL: &str = "https://github.com/lencx/ChatGPT/blob/main/UPDATE_LOG.md";
 pub const BUY_COFFEE: &str = "https://www.buymeacoffee.com/lencx";
 pub const GITHUB_PROMPTS_CSV_URL: &str =
@@ -39,6 +40,7 @@ pub_struct!(AppConf {
   save_window_state: bool,
   global_shortcut: Option<String>,
   default_origin: String,
+  speech_lang: String,
 
   // Main Window
   isinit: bool,
@@ -68,6 +70,10 @@ impl AppConf {
       save_window_state: false,
       theme: "light".into(),
       auto_update: "prompt".into(),
+      #[cfg(target_os = "macos")]
+      speech_lang: "com.apple.eloquence.en-US.Rocko".into(),
+      #[cfg(not(target_os = "macos"))]
+      speech_lang: "".into(),
       tray: true,
       popup_search: false,
       isinit: true,

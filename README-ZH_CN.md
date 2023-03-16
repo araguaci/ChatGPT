@@ -6,7 +6,6 @@
 
 [![English badge](https://img.shields.io/badge/%E8%8B%B1%E6%96%87-English-blue)](./README.md)
 [![简体中文 badge](https://img.shields.io/badge/%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-Simplified%20Chinese-blue)](./README-ZH_CN.md)\
-![License](https://img.shields.io/badge/License-Apache%202-green.svg)
 [![ChatGPT downloads](https://img.shields.io/github/downloads/lencx/ChatGPT/total.svg?style=flat-square)](https://github.com/lencx/ChatGPT/releases)
 [![chat](https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord)](https://discord.gg/aPhCRf4zZr)
 [![lencx](https://img.shields.io/badge/follow-lencx__-blue?style=flat&logo=Twitter)](https://twitter.com/lencx_)
@@ -14,6 +13,15 @@
 <!-- [![lencx](https://img.shields.io/twitter/follow/lencx_.svg?style=social)](https://twitter.com/lencx_) -->
 
 <a href="https://www.buymeacoffee.com/lencx" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 145px !important;" ></a>
+
+**它是一个非官方项目，仅供个人学习研究。ChatGPT 桌面应用开源的这段时间，受到了很多关注，谢谢大家的支持。随着事情的发展，有两个问题严重影响了项目的下一步开发计划:**
+
+- **有人利用它进行二次打包销售，谋取私利**
+- **ChatGPT 因名称和图标问题可能会涉及侵权**
+
+**新仓库：https://github.com/lencx/nofwl**
+
+---
 
 ## 📦 安装
 
@@ -24,7 +32,7 @@
 
 ### Windows
 
-- [ChatGPT_0.11.0_windows_x86_64.msi](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_windows_x86_64.msi)
+- [ChatGPT_0.12.0_windows_x86_64.msi](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_windows_x86_64.msi)
 - 使用 [winget](https://winstall.app/apps/lencx.ChatGPT):
 
   ```bash
@@ -35,12 +43,12 @@
   winget install --id=lencx.ChatGPT -e --version 0.10.0
   ```
 
-**注意：如果安装路径和应用名称相同，会导致冲突 ([#142](https://github.com/lencx/ChatGPT/issues/142#issuecomment-0.11.0))**
+**注意：如果安装路径和应用名称相同，会导致冲突 ([#142](https://github.com/lencx/ChatGPT/issues/142#issuecomment-0.12.0))**
 
 ### Mac
 
-- [ChatGPT_0.11.0_macos_aarch64.dmg](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_macos_aarch64.dmg)
-- [ChatGPT_0.11.0_macos_x86_64.dmg](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_macos_x86_64.dmg)
+- [ChatGPT_0.12.0_macos_aarch64.dmg](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_macos_aarch64.dmg)
+- [ChatGPT_0.12.0_macos_x86_64.dmg](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_macos_x86_64.dmg)
 - Homebrew \
   _[Homebrew 快捷安装](https://brew.sh) ([Cask](https://docs.brew.sh/Cask-Cookbook)):_
   ```sh
@@ -54,14 +62,16 @@
   cask "chatgpt", args: { "no-quarantine": true }
   ```
 
+如果在 macOS 上安装软件时遇到 `“ChatGPT” is damaged and can't be opened. You should move it to the Trash.` 错误消息，可能是由于 macOS 安全设置的限制导致的。为了解决此问题，请在终端尝试以下命令：
+
+```bash
+sudo xattr -r -d com.apple.quarantine /YOUR_PATH/ChatGPT.app
+```
+
 ### Linux
 
-- [ChatGPT_0.11.0_linux_x86_64.deb](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_linux_x86_64.deb)
-- [ChatGPT_0.11.0_linux_x86_64.AppImage.tar.gz](https://github.com/lencx/ChatGPT/releases/download/v0.11.0/ChatGPT_0.11.0_linux_x86_64.AppImage.tar.gz): **工作可靠，`.deb` 运行失败时可以尝试它**
-- 使用 [AUR](https://aur.archlinux.org/packages/chatgpt-desktop-bin):
-  ```bash
-  yay -S chatgpt-desktop-bin
-  ```
+- [ChatGPT_0.12.0_linux_x86_64.deb](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_linux_x86_64.deb)
+- [ChatGPT_0.12.0_linux_x86_64.AppImage.tar.gz](https://github.com/lencx/ChatGPT/releases/download/v0.12.0/ChatGPT_0.12.0_linux_x86_64.AppImage.tar.gz): **工作可靠，`.deb` 运行失败时可以尝试它**
 
 <!-- tr-download-end -->
 
@@ -252,4 +262,4 @@ yarn build
 
 ## License
 
-Apache License
+AGPL-3.0 License

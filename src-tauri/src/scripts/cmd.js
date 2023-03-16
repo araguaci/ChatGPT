@@ -83,6 +83,16 @@ function init() {
     width: 16px;
     height: 16px;
   }
+  .chatappico.refresh {
+    width: 22px;
+    height: 22px;
+  }
+  #download-markdown-button,
+  #download-png-button,
+  #download-pdf-button,
+  #refresh-page-button {
+    border: none;
+  }
   @media screen and (max-width: 767px) {
     #download-png-button, #download-pdf-button, #download-html-button {
       display: none;
@@ -167,6 +177,11 @@ async function cmdTip() {
     // If more than one command appears in the search results, the first one will be used by default.
     function cmdKeydown(event) {
       if (!window.__CHAT_MODEL_CMD_PROMPT__) {
+        if (!event.shiftKey && event.keyCode === 13 && __TAURI_METADATA__.__currentWindow.label === 'tray') {
+          const btn = document.querySelector('form button');
+          if (btn) btn.click();
+          event.preventDefault();
+        }
         return;
       }
 
@@ -245,6 +260,7 @@ async function cmdTip() {
         searchInput.value = window.__CHAT_MODEL_CMD_PROMPT__;
 
         initDom();
+
         event.preventDefault();
       }
     }
