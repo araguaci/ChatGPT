@@ -7,7 +7,7 @@
   },
   "package": {
     "productName": "ChatGPT",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "tauri": {
     "allowlist": {
@@ -36,6 +36,9 @@
         "all": true
       },
       "os": {
+        "all": true
+      },
+      "dialog": {
         "all": true
       },
       "process": {

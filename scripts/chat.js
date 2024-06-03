@@ -1,6 +1,6 @@
 /**
  * @name chat.js
- * @version 0.1.1
+ * @version 0.1.4
  * @url https://github.com/lencx/ChatGPT/tree/main/scripts/chat.js
  */
 
@@ -25,7 +25,7 @@ function chatInit() {
     });
 
     document.addEventListener('visibilitychange', focusOnInput);
-    gpt4Mobile();
+    autoContinue();
   }
 
   function observeMutations(mutationsList) {
@@ -116,43 +116,42 @@ function chatInit() {
     };
   }
 
-  function gpt4Mobile() {
-    const originFetch = fetch;
-    window.fetch = (url, options) => {
-      return originFetch(url, options).then(async (response) => {
-        if (url.indexOf('/backend-api/models') === -1) {
-          return response;
-        }
-        const responseClone = response.clone();
-        let res = await responseClone.json();
-        res.models = res.models.map((m) => {
-          m.tags = m.tags.filter((t) => {
-            return t !== 'mobile';
-          });
-          if (m.slug === 'gpt-4-mobile') {
-            res.categories.push({
-              browsing_model: null,
-              category: 'gpt_4',
-              code_interpreter_model: null,
-              default_model: 'gpt-4-mobile',
-              human_category_name: 'GPT-4-Mobile',
-              plugins_model: null,
-              subscription_level: 'plus',
-            });
-          }
-          return m;
-        });
+  function autoContinue() {
+    // Create an instance of the observer
+    const observer = new MutationObserver((mutationsList) => {
+      for (let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+          const btn = Array.from(mutation.target.querySelectorAll('button.btn')).find((btn) =>
+            btn.innerText.includes('Continue generating'),
+          );
 
-        return new Response(JSON.stringify(res), response);
-      });
-    };
+          if (btn) {
+            console.log("Found the button of 'Continue generating'");
+            setTimeout(() => {
+              console.log('Clicked it to continue generating after 1 second');
+              btn.click();
+            }, 1000);
+            return;
+          }
+        }
+      }
+    });
+
+    // Wait until the form exists
+    const interval = setInterval(() => {
+      if (document.forms[0]) {
+        // Start observing the dom change of the form
+        observer.observe(document.forms[0], {
+          attributes: false,
+          childList: true,
+          subtree: true,
+        });
+        clearInterval(interval); // Stop checking when the form exists
+      }
+    }, 1000);
   }
 
   init();
 }
 
-if (document.readyState === 'complete' || document.readyState === 'interactive') {
-  chatInit();
-} else {
-  document.addEventListener('DOMContentLoaded', chatInit);
-}
+document.addEventListener('DOMContentLoaded', chatInit);

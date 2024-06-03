@@ -1,6 +1,6 @@
 /**
  * @name core.js
- * @version 0.1.0
+ * @version 0.1.2
  * @url https://github.com/lencx/ChatGPT/tree/main/scripts/core.js
  */
 
@@ -84,21 +84,13 @@ function coreInit() {
         document.body.appendChild(topDom);
 
         if (window.location.host === 'chat.openai.com') {
-          const nav = document.body.querySelector('nav');
-          if (nav) {
-            const currentPaddingTop = parseInt(
-              window
-                .getComputedStyle(document.querySelector('nav'), null)
-                .getPropertyValue('padding-top')
-                .replace('px', ''),
-              10,
-            );
-            const navStyleDom = document.createElement('style');
-            navStyleDom.innerHTML = `nav{padding-top:${
-              currentPaddingTop + topDom.clientHeight
-            }px !important}`;
-            document.head.appendChild(navStyleDom);
-          }
+          const intervalId = setInterval(function () {
+            const nav = document.body.querySelector('nav');
+            if (nav) {
+              nav.style.paddingTop = '25px';
+              clearInterval(intervalId);
+            }
+          }, 1000);
         }
 
         topDom.addEventListener('mousedown', () => invoke('drag_window'));
